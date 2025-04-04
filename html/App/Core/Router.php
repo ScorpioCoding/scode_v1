@@ -71,8 +71,8 @@ class Router
       // echo 'full namespace : ' . $this->setFullNamespace() . '<br>';
       //echo ' full controller : ' . $controller;
 
-      // echo '<pre> ';
-      //var_dump($controller);
+      // echo '<pre> Router ::';
+      // var_dump($controller);
       // echo '</pre>';
 
       if (class_exists($controller)) {

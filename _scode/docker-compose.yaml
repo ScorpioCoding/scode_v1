@@ -1,20 +1,46 @@
 services:
   #nginx
-  server:
-    container_name: scode-server
+  scodeserver:
+    container_name: scodeserver
     image: nginx:stable-alpine
     restart: always
     ports:
       - "7080:80"
+      - "7082:82"
+      - "7084:84"
     volumes:
       - ../html:/var/www/html
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     networks:
       - scodenet
 
-  #php
-  app:
-    container_name: scode-app
+  #app -- https://example.org
+  scodeapp:
+    container_name: scodeapp
+    build:
+      context: .
+      dockerfile: ./php/Dockerfile
+    restart: always
+    volumes:
+      - ../html:/var/www/html
+    networks:
+      - scodenet
+
+  #admin -- https://admin.example.org
+  scodeadmin:
+    container_name: scodeadmin
+    build:
+      context: .
+      dockerfile: ./php/Dockerfile
+    restart: always
+    volumes:
+      - ../html:/var/www/html
+    networks:
+      - scodenet
+
+  #api -- https://api.example.org
+  scodeapi:
+    container_name: scodeapi
     build:
       context: .
       dockerfile: ./php/Dockerfile

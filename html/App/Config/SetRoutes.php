@@ -16,22 +16,17 @@ class SetRoutes
 
   private function loadModules()
   {
-    $scan = scandir(PATH_MOD);
-    foreach ($scan as $dir) {
-      if ($dir != "." || $dir != "..") {
-        if (is_dir(PATH_MOD . $dir)) {
 
-          $scan2 = scandir(PATH_MOD . ucfirst($dir) . DS . 'Routes' . DS);
-          foreach ($scan2 as $file) {
-            if (!is_dir(PATH_MOD . ucfirst($dir) . DS . 'Routes' . DS . $file)) {
-              //echo $file;
-              $mods = include_once(PATH_MOD . ucfirst($dir) . DS . 'Routes' . DS . $file);
-              foreach ($mods as $mod => $params) {
-                $this->modules[$mod] = $params;
-              };
-            }
-          }
+    //echo WEBSITE_MODULE;
+    $scan2 = scandir(PATH_MOD . ucfirst(WEBSITE_MODULE) . DS . 'Routes' . DS);
+    foreach ($scan2 as $file) {
+      if (!is_dir(PATH_MOD . ucfirst(WEBSITE_MODULE) . DS . 'Routes' . DS . $file)) {
+        //echo $file;
+        $mods = include_once(PATH_MOD . ucfirst(WEBSITE_MODULE) . DS . 'Routes' . DS . $file);
+        foreach ($mods as $mod => $params) {
+          $this->modules[$mod] = $params;
         }
+        ;
       }
     }
   }
@@ -47,7 +42,8 @@ class SetRoutes
       // echo '<pre>';
       // print_r($this->routes[$key]);
       // echo '</pre>';
-    };
+    }
+    ;
   }
 
 
