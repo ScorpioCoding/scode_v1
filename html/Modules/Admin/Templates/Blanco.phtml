@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="<?= $scMetaLanguage ?>" dir="ltr" color-scheme="auto">
+
+<head>
+  <?php include 'backend/header.phtml'; ?>
+
+
+
+  <link rel="stylesheet" href="<?= $scPathCoreCss; ?>.css">
+  <link rel="stylesheet" href="<?= $scPathTempCss; ?>.css">
+  <link rel="stylesheet" href="<?= $scPathCss; ?>.css">
+</head>
+
+<body>
+  <div class="grid-full-layout">
+
+    <main>
+      <?php include $page; ?>
+    </main>
+
+
+
+    <footer>
+      <?php include 'backend/footer.phtml' ?>
+    </footer>
+  </div>
+
+
+  <script type="module" src="<?= $scPathCoreJs; ?>.js"></script>
+  <script type="module" src="<?= $scPathTempJs; ?>.js"></script>
+  <script src="<?= $scPathJs; ?>.js"></script>
+</body>
+
+</html>

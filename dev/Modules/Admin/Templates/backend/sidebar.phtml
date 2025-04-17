@@ -1,0 +1,57 @@
+<div class="wrapper">
+  <div class="dropdown">
+    <button class="dropdown-btn" onclick="toggleDropDown(event)">
+      <span><?= $trans['sidebar']['dashboard'] ?></span>
+      <span class="arrow"></span>
+    </button>
+    <ul class="dropdown-content">
+      <li>
+        <a <?= $scMetaController === 'Dashboard' ? 'class="active"' : '' ?> href="/<?= $scMetaLanguage ?>/dashBoard">
+          <?= $trans['sidebar']['dashboard'] ?>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="dropdown">
+    <button class="dropdown-btn" onclick="toggleDropDown(event)">
+      <span><?= $trans['sidebar']['users'] ?></span>
+      <span class="arrow"></span>
+    </button>
+    <ul class="dropdown-content">
+      <li>
+        <a <?= $scMetaController === 'User' ? 'class="active"' : '' ?> href="/<?= $scMetaLanguage ?>/user/readall">
+          <?= $trans['sidebar']['list'] ?>
+        </a>
+      </li>
+      <li>
+        <a <?= $scMetaController === 'User' ? 'class="active"' : '' ?> href="/<?= $scMetaLanguage ?>/user/create">
+          <?= $trans['sidebar']['create'] ?>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="dropdown">
+    <button class="dropdown-btn" onclick="toggleDropDown(event)">
+      <span><?= $trans['sidebar']['posts'] ?></span>
+      <span class="arrow"></span>
+    </button>
+    <ul class="dropdown-content">
+      <li>
+        <a <?= $scMetaController === 'Post' ? 'class="active"' : '' ?> href="/<?= $scMetaLanguage ?>/post/readall">
+          <?= $trans['sidebar']['list'] ?>
+        </a>
+      </li>
+      <li>
+        <a <?= $scMetaController === 'Post' ? 'class="active"' : '' ?> href="/<?= $scMetaLanguage ?>/post/create">
+          <?= $trans['sidebar']['create'] ?>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

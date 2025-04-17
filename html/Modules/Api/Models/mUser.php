@@ -425,14 +425,22 @@ class mUser extends Database
     return $stmt->fetch();
   }
 
-  public static function authenticate(array $args): bool|object
+  public static function authenticate(string $email, string $psw): bool|object
   {
-    $user = static::getUserByEmail($args['email']);
+    //print_r($args['psw']);
+    $user = static::getUserByEmail($email);
     //print_r($user);
     if ($user) {
-      if ($user->archive == '0')
-        if (password_verify($args['psw'], $user->pswhash))
+      if ($user->archive == '0' || $user->archive == 'null') {
+        // print_r($user);
+
+        if (true === password_verify($psw, $user->pswhash)) {
+          //if (true === password_verify('ChangeMe01', $user->pswhash)) {
+          // print_r("True");
           return $user;
+        }
+
+      }
     }
     return false;
   }

@@ -32,8 +32,8 @@ class App
 
   /**
    * Retreave the subdomain name
-   * "http://admin.example.org -> admin
-   * "http://example.org -> site
+   * "http://admin.example.org -> admin -> Admin
+   * "http://example.org -> site -> Site
    * 
    * @return void
    */

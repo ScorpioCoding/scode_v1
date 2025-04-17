@@ -34,10 +34,25 @@
   --white: hsl(0, 0%, 100%);
   --black: hsl(0, 0%, 10%);
 
-  --grey: hsl(0, 0%, 20%);
-  --grey-hue: 0;
-  --grey-sat: 0%;
-  --grey-light: 20%;
+  --grey-light: hsl(0, 0%, 80%);
+  --grey-light-hue: 0;
+  --grey-light-sat: 0%;
+  --grey-light-light: 80%;
+
+  --grey-normal: hsl(0, 0%, 60%);
+  --grey-normal-hue: 0;
+  --grey-normal-sat: 0%;
+  --grey-normal-light: 60%;
+
+  --grey-medium: hsl(0, 0%, 40%);
+  --grey-medium-hue: 0;
+  --grey-medium-sat: 0%;
+  --grey-medium-light: 40%;
+
+  --grey-dark: hsl(0, 0%, 20%);
+  --grey-dark-hue: 0;
+  --grey-dark-sat: 0%;
+  --grey-dark-light: 20%;
 
   --crimson: hsl(354, 100%, 50%);
   --crimson-hue: 354;

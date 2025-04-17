@@ -9,34 +9,34 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 $method = $_SERVER['REQUEST_METHOD'];
 $response = array();
 
-if ($isToken) {
-    if ($isMethod) {
-        if ($isHas["state"] === true) {
-            if ($isCount["state"] === true && $isCount["data"][0] > 0) {
-                //Successfully  
-                header('HTTP/1.1 200 OK');
-                $response["success"] = true;
-                $response['data'] = $isData["data"];
-            } else {
-                //Successfully  
-                header('HTTP/1.1 200 OK');
-                $response["success"] = false;
-                $response['errors'] = $isData["data"];
-            }
+// if ($isToken) {
+if ($isMethod) {
+    if ($isHas["state"] === true) {
+        if ($isCount["state"] === true && $isCount["data"][0] > 0) {
+            //Successfully  
+            header('HTTP/1.1 200 OK');
+            $response["success"] = true;
+            $response['data'] = $isData["data"];
         } else {
-            // There was an error
-            header('HTTP/1.1 500 Could not execute query');
-            $response['error'] = $isHas["data"];
+            //Successfully  
+            header('HTTP/1.1 200 OK');
+            $response["success"] = false;
+            $response['errors'] = $isData["data"];
         }
     } else {
-        header('HTTP/1.1 405 Method not allowed');
-        $response['error'] = "Invalid Method";
+        // There was an error
+        header('HTTP/1.1 500 Could not execute query');
+        $response['error'] = $isHas["data"];
     }
 } else {
-    // There was an error
-    header('HTTP/1.1 401 Unauthorized');
-    header("WWW-Authenticate: Authorization token required !");
+    header('HTTP/1.1 405 Method not allowed');
+    $response['error'] = "Invalid Method";
 }
+// } else {
+//     // There was an error
+//     header('HTTP/1.1 401 Unauthorized');
+//     header("WWW-Authenticate: Authorization token required !");
+// }
 
 if ('OPTIONS' === $method) {
     header('HTTP/1.1 204 No Content');

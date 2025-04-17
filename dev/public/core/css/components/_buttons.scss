@@ -1,66 +1,173 @@
-%btn-common {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 3px;
-  line-height: normal;
-  font-weight: 400;
-  font-style: normal;
-  transition: all 0.25s;
-  text-align: center;
-  white-space: nowrap;
+//STYLES BUTTONS
+
+%button-shared {
+  border: 0;
+  //margin: 2px;
+  padding: 8px;
+  border-radius: 4px;
   cursor: pointer;
-  touch-action: manipulation;
-  outline: none;
-  user-select: none;
-
-  &:disabled {
-    cursor: not-allowed;
-  }
-}
-
-.btn {
-  @extend %btn-common;
-  width: fit-content;
-  padding: 12px 20px;
-  border: none;
-}
-
-.rad-shadow {
-  border: 1px solid hsl(var(--brand) 10% 50% / 15%);
-  box-shadow: 0 1rem 0.5rem -0.5rem;
-  box-shadow: 0 2.8px 2.2px hsl(var(--shadow) / calc(var(--shadow-strength) + 0.03)),
-    0 6.7px 5.3px hsl(var(--shadow) / calc(var(--shadow-strength) + 0.01)),
-    0 12.5px 10px hsl(var(--shadow) / calc(var(--shadow-strength) + 0.02)),
-    0 22.3px 17.9px hsl(var(--shadow) / calc(var(--shadow-strength) + 0.02)),
-    0 41.8px 33.4px hsl(var(--shadow) / calc(var(--shadow-strength) + 0.03)),
-    0 100px 80px hsl(var(--shadow) / var(--shadow-strength));
-}
-
-.btn-boston {
-  background-color: hsl(var(--boston-hue), var(--boston-sat), 34%);
-  color: var(--txt-light);
-
-  &:hover {
-    background-color: hsl(var(--boston-hue), 40%, 45%);
-  }
 }
 
 .btn-fern {
-  background-color: hsl(var(--fern-hue), var(--fern-sat), 34%);
-  color: var(--txt-light);
-
+  @extend %button-shared;
+  background-color: var(--fern);
+  color: var(--grey-light);
   &:hover {
-    background-color: hsl(var(--fern-hue), 40%, 45%);
+    background-color: var(--fern-dark);
+  }
+}
+.btn-fern-stretch {
+  @extend %button-shared;
+  width: 100%;
+  background-color: var(--fern);
+  color: var(--grey-light);
+  &:hover {
+    background-color: var(--fern-dark);
   }
 }
 
+.btn-crimson {
+  @extend %button-shared;
+  background-color: var(--crimson);
+  color: var(--grey-light);
+  &:hover {
+    background-color: var(--crimson-dark);
+  }
+}
+
+.btn-crimson-stretch {
+  @extend %button-shared;
+  width: 100%;
+  background-color: var(--crimson);
+  color: var(--grey-light);
+  &:hover {
+    background-color: var(--crimson-dark);
+  }
+}
+
+.btn-grey {
+  @extend %button-shared;
+  background-color: var(--grey-medium);
+  color: var(--grey-light);
+  &:hover {
+    background-color: var(--grey-dark);
+  }
+}
+
+.btn-grey-stretch {
+  @extend %button-shared;
+  width: 100%;
+  background-color: var(--grey-medium);
+  color: var(--grey-light);
+  &:hover {
+    background-color: var(--grey-dark);
+  }
+}
+
+.btn-boston {
+  @extend %button-shared;
+  background-color: var(--boston);
+  color: var(--grey-light);
+  &:hover {
+    background-color: var(--boston-dark);
+  }
+}
+
+.btn-boston-stretch {
+  @extend %button-shared;
+  width: 100%;
+  background-color: var(--boston);
+  color: var(--grey-light);
+  &:hover {
+    background-color: var(--boston-dark);
+  }
+}
 
 .btn-coral {
-  background-color: hsl(var(--coral-hue), var(--coral-sat), 34%);
-  color: var(--txt-light);
-
+  @extend %button-shared;
+  background-color: var(--coral);
+  color: var(--grey-light);
   &:hover {
-    background-color: hsl(var(--coral-hue), 40%, 45%);
+    background-color: var(--coral-dark);
+  }
+}
+
+.btn-coral-stretch {
+  @extend %button-shared;
+  width: 100%;
+  background-color: var(--coral);
+  color: var(--grey-light);
+  &:hover {
+    background-color: var(--coral-dark);
+  }
+}
+
+.btn-razzle {
+  @extend %button-shared;
+  background-color: var(--razzle);
+  color: var(--grey-light);
+  &:hover {
+    background-color: var(--razzle-dark);
+  }
+}
+
+.btn-razzle-stretch {
+  @extend %button-shared;
+  width: 100%;
+  background-color: var(--razzle);
+  color: var(--grey-light);
+  &:hover {
+    background-color: var(--razzle-dark);
+  }
+}
+
+.btn-royal {
+  @extend %button-shared;
+  background-color: var(--royal);
+  color: var(--grey-light);
+  &:hover {
+    background-color: var(--royal-dark);
+  }
+}
+
+.btn-royal-stretch {
+  @extend %button-shared;
+  width: 100%;
+  background-color: var(--royal);
+  color: var(--grey-light);
+  &:hover {
+    background-color: var(--royal-dark);
+  }
+}
+
+.btn-sun {
+  @extend %button-shared;
+  background-color: var(--sun);
+  color: var(--grey-dark);
+  &:hover {
+    background-color: var(--sun-dark);
+  }
+}
+
+.btn-sun-stretch {
+  @extend %button-shared;
+  width: 100%;
+  background-color: var(--sun);
+  color: var(--grey-dark);
+  &:hover {
+    background-color: var(--sun-dark);
+  }
+}
+
+.btn-transparent-light {
+  border: 0;
+  margin: 2px;
+  padding: 8px;
+  cursor: pointer;
+  //width: 100%;
+  background-color: transparent;
+  color: var(--grey-light);
+  &:hover {
+    color: var(--grey-dark);
   }
 }

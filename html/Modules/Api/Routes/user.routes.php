@@ -19,7 +19,7 @@ return (object) array(
     'action' => 'create'
   ],
 
-  '/user/read/all' => [
+  '/user/readall' => [
     'lang' => 'en',
     'module' => 'Api',
     'namespace' => 'Modules\Api\Controllers',

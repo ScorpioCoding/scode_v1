@@ -1,0 +1,1 @@
+import useHttp from"./usehttp.js";export default function Login(){let[t]=useHttp();return[(e,n,o)=>{t(e,"POST",{"Content-Type":"application/json"},n,o)}]}

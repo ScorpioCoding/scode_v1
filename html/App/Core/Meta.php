@@ -100,7 +100,7 @@ class Meta
     $this->meta['scMetaOgDescription'] .= ' ';
   }
 
-  public function getMeta()
+  public function getMeta(): array
   {
     return $this->meta;
   }

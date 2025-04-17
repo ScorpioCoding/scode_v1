@@ -20,7 +20,7 @@ class Home extends Controller
   public function indexAction($args = array())
   {
     //Template for rendering
-    $args['template'] = 'Backend';
+    $args['template'] = 'Blanco';
     //MetaData
     $meta = array();
     $meta = (new Meta($args))->getMeta();

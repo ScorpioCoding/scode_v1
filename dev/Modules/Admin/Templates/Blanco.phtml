@@ -2,7 +2,7 @@
 <html lang="<?= $scMetaLanguage ?>" dir="ltr" color-scheme="auto">
 
 <head>
-  <?php include 'admin/header.phtml'; ?>
+  <?php include 'backend/header.phtml'; ?>
 
 
 
@@ -12,23 +12,22 @@
 </head>
 
 <body>
-  <div class="grid-layout-full">
-    <header>
-      <?php include 'admin/navigation.phtml' ?>
-    </header>
+  <div class="grid-full-layout">
 
     <main>
       <?php include $page; ?>
     </main>
 
+
+
     <footer>
-      <?php include 'admin/footer.phtml' ?>
+      <?php include 'backend/footer.phtml' ?>
     </footer>
   </div>
 
 
-  <script src="<?= $scPathCoreJs; ?>.js"></script>
-  <script src="<?= $scPathTempJs; ?>.js"></script>
+  <script type="module" src="<?= $scPathCoreJs; ?>.js"></script>
+  <script type="module" src="<?= $scPathTempJs; ?>.js"></script>
   <script src="<?= $scPathJs; ?>.js"></script>
 </body>
 

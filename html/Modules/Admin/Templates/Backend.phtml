@@ -12,14 +12,20 @@
 </head>
 
 <body>
-  <div class="grid-layout-full">
+  <div class="grid-full-layout">
     <header>
       <?php include 'backend/navigation.phtml' ?>
     </header>
 
-    <main>
-      <?php include $page; ?>
-    </main>
+    <div class="page">
+      <aside>
+        <?php include 'backend/sidebar.phtml' ?>
+      </aside>
+      <main>
+        <?php include $page; ?>
+      </main>
+    </div>
+
 
     <footer>
       <?php include 'backend/footer.phtml' ?>
@@ -27,8 +33,8 @@
   </div>
 
 
-  <script src="<?= $scPathCoreJs; ?>.js"></script>
-  <script src="<?= $scPathTempJs; ?>.js"></script>
+  <script type="module" src="<?= $scPathCoreJs; ?>.js"></script>
+  <script type="module" src="<?= $scPathTempJs; ?>.js"></script>
   <script src="<?= $scPathJs; ?>.js"></script>
 </body>
 

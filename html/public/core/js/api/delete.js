@@ -1,0 +1,1 @@
+import useHttp from"./usehttp.js";export default function Delete(){const t=JSON.parse(sessionStorage.getItem("token"));let[e]=useHttp();return[(o,n)=>{e(o,"DELETE",{"Content-Type":"application/json",Authorization:"Basic "+t},null,n)}]}

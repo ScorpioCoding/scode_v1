@@ -6,6 +6,25 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "logout": "Logout",
+    "profile": "Profile"
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "posts": "Posts",
+    "list": "List",
+    "create": "Create"
+  },
+  "user": {
+    "btn": {
+      "create": "Create User",
+      "read": "Read User",
+      "readall": "Read Users",
+      "update": "Update User",
+      "delete": "Delete User",
+      "login": "User Login"
+    }
   }
 }

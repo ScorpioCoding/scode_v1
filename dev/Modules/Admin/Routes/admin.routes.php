@@ -26,17 +26,10 @@ return (object) array(
     'action' => 'index'
   ],
 
-  '/{lang}/about' => [
+  '/{lang}/dashboard' => [
     'module' => 'Admin',
     'namespace' => 'Modules\Admin\Controllers',
-    'controller' => 'About',
-    'action' => 'index'
-  ],
-
-  '/{lang}/contact' => [
-    'module' => 'Admin',
-    'namespace' => 'Modules\Admin\Controllers',
-    'controller' => 'Contact',
+    'controller' => 'Dashboard',
     'action' => 'index'
   ]
 

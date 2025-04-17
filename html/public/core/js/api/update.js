@@ -1,0 +1,1 @@
+import useHttp from"./usehttp.js";export default function Update(){const t=JSON.parse(sessionStorage.getItem("token"));let[e]=useHttp();return[(o,n,s)=>{e(o,"PUT",{"Content-Type":"application/json",Authorization:"Basic "+t},n,s)}]}

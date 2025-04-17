@@ -1,0 +1,22 @@
+<section class="container">
+  <h1>THIS IS THE ADMIN LOGIN PAGE</h1>
+</section>
+
+<section class="container">
+  <ul id="errorList" class="errorList">
+  </ul>
+</section>
+
+<br /><br />
+<section class="container">
+  <?php $hash = password_hash("ChangeMe01", PASSWORD_DEFAULT); ?>
+  <?= print_r($hash); ?>
+</section>
+
+<section class="container">
+  <?php if (true === password_verify('ChangeMe01', $hash)): ?>
+    <span>True</span>
+  <?php else: ?>
+    <span>False</span>
+  <?php endif ?>
+</section>

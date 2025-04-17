@@ -50,6 +50,43 @@ services:
     networks:
       - scodenet
 
+  #dB
+  scodedb:
+    container_name: scodedb
+    platform: linux/x86_64
+    image: mysql:8
+    ports:
+      - 7086:3306
+    volumes:
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/0_init.sql
+      - scodedata:/var/lib/mysql
+    restart: always # always restart unless stopped manually
+    environment:
+      MYSQL_DATABASE: scodeblog
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: r00tadmin
+      MYSQL_ROOT_PASSWORD: r00tadmin
+    networks:
+      - scodenet
+
+  #phpadmin
+  scodedbadmin:
+    container_name: scodedbadmin
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: scodedb
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    ports:
+      - 7088:80
+    networks:
+      - scodenet
+
+volumes:
+  scodedata:
+    driver: local
+    name: scodedata
+
 networks:
   scodenet:
     name: scodenet

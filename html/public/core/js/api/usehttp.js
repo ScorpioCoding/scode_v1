@@ -1,0 +1,1 @@
+export default function useHttp(){return[async(t,e,s,a,o)=>{await fetch(t,{mode:"cors",method:e,headers:s,body:a?JSON.stringify(a):null}).then((async t=>{if(200!==t.status)throw new Error(t.statusText);{let e=await t.json();o(e)}})).catch((t=>{console.log(t.message)}))}]}

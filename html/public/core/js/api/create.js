@@ -1,0 +1,1 @@
+import useHttp from"./usehttp.js";export default function Create(){let[t]=useHttp();return[(e,n,o)=>{t(e,"POST",{"Content-Type":"application/json",Origin:"admin.localhost"},n,o)}]}
