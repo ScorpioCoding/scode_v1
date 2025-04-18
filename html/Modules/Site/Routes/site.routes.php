@@ -38,6 +38,20 @@ return (object) array(
     'namespace' => 'Modules\Site\Controllers',
     'controller' => 'Contact',
     'action' => 'index'
+  ],
+
+  '/{lang}/posts' => [
+    'module' => 'Site',
+    'namespace' => 'Modules\Site\Controllers',
+    'controller' => 'Post',
+    'action' => 'readAll'
+  ],
+
+  '/{lang}/article/{slug}' => [
+    'module' => 'Site',
+    'namespace' => 'Modules\Site\Controllers',
+    'controller' => 'Post',
+    'action' => 'readBySlug'
   ]
 
 

@@ -16,6 +16,11 @@
         </a>
       </li>
       <li>
+        <a <?= $scMetaController === 'Post' ? 'class="active"' : '' ?> href="/<?= $scMetaLanguage ?>/Posts">
+          <?= $trans['nav']['blog'] ?>
+        </a>
+      </li>
+      <li>
         <a <?= $scMetaController === 'About' ? 'class="active"' : '' ?> href="/<?= $scMetaLanguage ?>/About">
           <?= $trans['nav']['about'] ?>
         </a>
