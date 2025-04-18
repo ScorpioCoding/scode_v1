@@ -6,7 +6,8 @@
     </button>
     <ul class="dropdown-content">
       <li>
-        <a <?= $scMetaController === 'Dashboard' ? 'class="active"' : '' ?> href="/<?= $scMetaLanguage ?>/dashBoard">
+        <a <?= $scMetaController === 'Dashboard' ? 'class="active"' : '' ?> href="#"
+          onclick="btnPostRedirect('/<?= $scMetaLanguage ?>/dashBoard')">
           <?= $trans['sidebar']['dashboard'] ?>
         </a>
       </li>
@@ -22,15 +23,19 @@
     </button>
     <ul class="dropdown-content">
       <li>
-        <a <?= $scMetaController === 'User' ? 'class="active"' : '' ?> href="/<?= $scMetaLanguage ?>/user/readall">
+        <a <?= $scMetaController === 'User' ? 'class="active"' : '' ?> href="#"
+          onclick="btnPostRedirect('/<?= $scMetaLanguage ?>/user/readall')">
           <?= $trans['sidebar']['list'] ?>
         </a>
       </li>
-      <li>
-        <a <?= $scMetaController === 'User' ? 'class="active"' : '' ?> href="/<?= $scMetaLanguage ?>/user/create">
-          <?= $trans['sidebar']['create'] ?>
-        </a>
-      </li>
+      <?php if ($data['realm'] === 'super'): ?>
+        <li>
+          <a <?= $scMetaController === 'User' ? 'class="active"' : '' ?> href="#"
+            onclick="btnPostRedirect('/<?= $scMetaLanguage ?>/user/create')">
+            <?= $trans['sidebar']['create'] ?>
+          </a>
+        </li>
+      <?php endif ?>
     </ul>
   </div>
 </div>
@@ -43,12 +48,14 @@
     </button>
     <ul class="dropdown-content">
       <li>
-        <a <?= $scMetaController === 'Post' ? 'class="active"' : '' ?> href="/<?= $scMetaLanguage ?>/post/readall">
+        <a <?= $scMetaController === 'Post' ? 'class="active"' : '' ?> href="#"
+          onclick="btnPostRedirect('/<?= $scMetaLanguage ?>/post/readall')">
           <?= $trans['sidebar']['list'] ?>
         </a>
       </li>
       <li>
-        <a <?= $scMetaController === 'Post' ? 'class="active"' : '' ?> href="/<?= $scMetaLanguage ?>/post/create">
+        <a <?= $scMetaController === 'Post' ? 'class="active"' : '' ?> href="#"
+          onclick="btnPostRedirect('/<?= $scMetaLanguage ?>/user/create')">
           <?= $trans['sidebar']['create'] ?>
         </a>
       </li>

@@ -11,12 +11,13 @@
   <div class="navbar-links">
     <ul class="links">
       <li>
-        <a <?= $scMetaController === 'Home' ? 'class="active"' : '' ?> href="/<?= $scMetaLanguage ?>/profile">
+        <a <?= $scMetaController === 'Home' ? 'class="active"' : '' ?> href="#"
+          onclick="btnPostRedirect('/<?= $scMetaLanguage ?>/profile')">
           <?= $trans['nav']['profile'] ?>
         </a>
       </li>
       <li>
-        <a <?= $scMetaController === 'Logout' ? 'class="active"' : '' ?> href="/<?= $scMetaLanguage ?>/logout">
+        <a <?= $scMetaController === 'Logout' ? 'class="active"' : '' ?> href="#" onclick="btnLogout()">
           <?= $trans['nav']['logout'] ?>
         </a>
       </li>

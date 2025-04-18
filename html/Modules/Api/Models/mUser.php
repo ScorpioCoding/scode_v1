@@ -431,18 +431,12 @@ class mUser extends Database
     $user = static::getUserByEmail($email);
     //print_r($user);
     if ($user) {
-      if ($user->archive == '0' || $user->archive == 'null') {
-        // print_r($user);
-
-        if (true === password_verify($psw, $user->pswhash)) {
-          //if (true === password_verify('ChangeMe01', $user->pswhash)) {
-          // print_r("True");
+      if ($user->archive == '0' || $user->archive == 'null')
+        if (true === password_verify($psw, $user->pswhash))
           return $user;
-        }
-
-      }
     }
     return false;
+
   }
 
   //

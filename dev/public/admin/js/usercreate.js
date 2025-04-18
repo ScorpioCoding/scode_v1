@@ -1,6 +1,5 @@
 const createUser = () => {
-  // console.log("createUser");
-  // apiTest();
+  //
 
   console.log("JAVASCRIPT usercreate.js: hier");
   const name = document.getElementById("name").value;
@@ -14,7 +13,9 @@ const createUser = () => {
   const getData = (data) => {
     if (data) {
       if (data.success === false) {
-        console.log(data.errors);
+        //console.log(data.errors);
+
+        ul.innerHTML = "";
 
         data.errors.forEach((item) => {
           let li = document.createElement("li");
@@ -32,7 +33,7 @@ const createUser = () => {
 
   var [createData] = apiCreate();
 
-  let url = "http://api.localhost:7084/user/create";
+  let url = apiUri + "/user/create";
   let body = {
     name: name,
     email: email,

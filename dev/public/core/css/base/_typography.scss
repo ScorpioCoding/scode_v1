@@ -49,6 +49,13 @@ code {
   line-height: 1.5;
 }
 
+.errorList {
+  font-family: var(--ff-code);
+  font-weight: var(--fw-400);
+  font-size: var(--fs-200);
+  line-height: 1.5;
+}
+
 // Base size std 45em
 @media (min-width: 45em) {
   // body {

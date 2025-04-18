@@ -108,6 +108,15 @@ class Auth
         return TokenBasic::setTokenBasic($email, $psw);
     }
 
+    public static function validateTokenBasic(string $token)
+    {
+        $state = false;
+        if (TokenBasic::validateTokenBasic($token)) {
+            $state = true;
+        }
+        return $state;
+    }
+
 
 
     //

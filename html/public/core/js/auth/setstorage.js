@@ -1,0 +1,1 @@
+export default function SetStorage(t){const e=window.sessionStorage;e.setItem("auth",JSON.stringify(t.auth)),e.setItem("name",JSON.stringify(t.name)),e.setItem("email",JSON.stringify(t.email)),e.setItem("realm",JSON.stringify(t.realm)),e.setItem("token",JSON.stringify(t.token))}

@@ -1,1 +1,1 @@
-import useHttp from"./usehttp.js";export default function Create(){let[t]=useHttp();return[(e,n,o)=>{t(e,"POST",{"Content-Type":"application/json",Origin:"admin.localhost"},n,o)}]}
+import useHttp from"./usehttp.js";export default function Create(){const t=JSON.parse(sessionStorage.getItem("token"));let[e]=useHttp();return[(o,n,s)=>{e(o,"POST",{"Content-Type":"application/json",Authorization:"Basic "+t},n,s)}]}

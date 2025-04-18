@@ -6,6 +6,7 @@ use App\Core\Controller;
 use App\Core\View;
 use App\Core\Translation;
 use App\Core\Meta;
+use App\Core\Auth;
 
 
 /**
@@ -15,6 +16,9 @@ class Dashboard extends Controller
 {
   protected function before()
   {
+    if (isset($_POST))
+      if (!isset($_POST['auth']) || empty($_POST['auth']) || $_POST['auth'] === 'false')
+        self::redirect('/');
   }
 
   public function indexAction($args = array())
@@ -29,10 +33,7 @@ class Dashboard extends Controller
     $trans = Translation::translate($args);
     // Extra data
     $data = array();
-
-
-
-
+    $data = $_POST;
 
 
     //page for rendering default = controller

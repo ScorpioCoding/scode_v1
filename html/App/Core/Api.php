@@ -17,7 +17,7 @@ class Api
   {
     $page = PATH_MOD;
     $page .= ucfirst($args['module']) . DS . 'Apis' . DS;
-    $page .= strtolower($args['api']);
+    $page .= ucfirst($args['api']);
     $page .= '.php';
 
     try {
@@ -33,7 +33,7 @@ class Api
   {
     $template = PATH_APP;
     $template .= 'Templates' . DS;
-    $template .= strtolower($args['template']);
+    $template .= ucfirst($args['template']);
     $template .= '.php';
 
     try {

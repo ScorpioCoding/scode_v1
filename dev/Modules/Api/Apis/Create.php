@@ -1,29 +1,12 @@
 <?php
 
+$allowed_domains = ['https://admin.scode.be', 'https://scode.be', 'https://www.scode.be'];
 
-//print_r("API USER/CREATE : " . $_SERVER['ORIGIN']);
-
-// header("Access-Control-Allow-Origin: http://admin.localhost:7084");
-// header("Access-Control-Allow-Credentials: true");
-// header("Content-Type: application/json; charset=UTF-8");
-// header("Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS");
-// header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-// Allow from any origin
-
-$allowed_domains = ['http://admin.localhost:7082', 'admin.locahost:7082'];
-
-// if (array_key_exists('HTTP_ORIGIN', $_SERVER)) {
-//   $origin = $_SERVER['HTTP_ORIGIN'];
-// } else if (array_key_exists('HTTP_REFERER', $_SERVER)) {
-//   $origin = $_SERVER['HTTP_REFERER'];
-// } else {
-//   $origin = $_SERVER['REMOTE_ADDR'];
-// }
-
-// if (isset($_SERVER['HTTP_ORIGIN']) && preg_match('!^http(s)?://([a-z0-9\-]+\.)?example\.com$!is', $_SERVER['HTTP_ORIGIN'])) {
-//   header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
-// }
-
+if (array_key_exists('HTTP_ORIGIN', $_SERVER)) {
+  $origin = $_SERVER['HTTP_ORIGIN'];
+} else if (array_key_exists('HTTP_REFERER', $_SERVER)) {
+  $origin = $_SERVER['HTTP_REFERER'];
+}
 
 if (in_array($origin, $allowed_domains)) {
   header('Access-Control-Allow-Origin: ' . $allowed_domains);
@@ -50,31 +33,31 @@ if ($_SERVER["REQUEST_METHOD"] == "OPTIONS") {
 $response = array();
 
 
-//if ($isToken) {
-if ($isMethod) {
-  if ($isData) {
-    if ($isErrors) {
-      header('HTTP/1.1 200 OK');
-      $response["success"] = false;
-      $response["errors"] = $isErrors;
+if ($isToken) {
+  if ($isMethod) {
+    if ($isData) {
+      if ($isErrors) {
+        header('HTTP/1.1 200 OK');
+        $response["success"] = false;
+        $response["errors"] = $isErrors;
+      } else {
+        header('HTTP/1.1 200 OK');
+        $response["success"] = true;
+        $response["data"] = $result;
+      }
     } else {
-      header('HTTP/1.1 200 OK');
-      $response["success"] = true;
-      $response["data"] = $result;
+      header('HTTP/1.1 400 Bad Request');
+      $response['error'] = "No data was provided!";
     }
   } else {
-    header('HTTP/1.1 400 Bad Request');
-    $response['error'] = "No data was provided!";
+    header('HTTP/1.1 405 Method not allowed');
+    $response['error'] = "Invalid Method";
   }
 } else {
-  header('HTTP/1.1 405 Method not allowed');
-  $response['error'] = "Invalid Method";
+  // There was an error
+  header('HTTP/1.1 401 Unauthorized');
+  header("WWW-Authenticate: Authorization token required !");
 }
-// } else {
-//   // There was an error
-//   header('HTTP/1.1 401 Unauthorized');
-//   header("WWW-Authenticate: Authorization token required !");
-// }
 
 
 // if ('OPTIONS' === $method) {

@@ -8,6 +8,11 @@ code {
   background-color: var(--black);
 }
 
+.errorList {
+  color: var(--crimson);
+  //background-color: var(--black);
+}
+
 .rad-shadow {
   border: 1px solid hsl(var(--primary) 10% 50% / 15%);
   box-shadow: 0 1rem 0.5rem -0.5rem;

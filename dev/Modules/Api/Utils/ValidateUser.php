@@ -38,7 +38,6 @@ class ValidateUser
             $errorList[] = 'UserName must be more than 3 characters!';
 
         $count = mCommon::countTableByName('user', $name);
-        var_dump($count);
         if ($count['state'] === true)
             if ($count['data'][0] > 0)
                 $errorList[] = 'UserName exists';
@@ -151,15 +150,20 @@ class ValidateUser
     {
         $errorList = array();
 
-        $psw = self::test_input($psw);
+
         $email = self::test_input($email);
+        $psw = self::test_input($psw);
 
         //Email
-        if (filter_var($email, FILTER_VALIDATE_EMAIL) === false)
+        if ($email === "")
+            $errorList[] = 'Email required !';
+        else if (filter_var($email, FILTER_VALIDATE_EMAIL) === false)
             $errorList[] = 'Email Invalid!';
 
         //Password 
-        if (!mUser::authenticate($email, $psw))
+        if ($psw === "")
+            $errorList[] = 'Password required !';
+        else if (!mUser::authenticate($email, $psw))
             $errorList[] = 'Invalid Credentials !';
 
         return $errorList;

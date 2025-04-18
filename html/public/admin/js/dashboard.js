@@ -1,0 +1,1 @@
+const start=()=>{var t=authGetStorage();console.log(t)};start();

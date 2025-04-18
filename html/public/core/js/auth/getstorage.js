@@ -1,0 +1,1 @@
+export default function GetStorage(){const e=window.sessionStorage,t={};return t.auth=JSON.parse(e.getItem("auth")),t.name=JSON.parse(e.getItem("name")),t.email=JSON.parse(e.getItem("email")),t.realm=JSON.parse(e.getItem("realm")),t.token=JSON.parse(e.getItem("token")),t}

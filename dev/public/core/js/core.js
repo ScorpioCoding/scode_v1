@@ -1,3 +1,6 @@
+import apiUri from "./api/urls.js";
+window.apiUri = apiUri;
+
 import Create from "./api/create.js";
 window.apiCreate = Create;
 
@@ -13,5 +16,11 @@ window.apiDelete = Delete;
 import LogIn from "./api/login.js";
 window.apiLogin = LogIn;
 
-import Test from "./api/test.js";
-window.apiTest = Test;
+import SetStorage from "./auth/setstorage.js";
+window.authSetStorage = SetStorage;
+
+import GetStorage from "./auth/getstorage.js";
+window.authGetStorage = GetStorage;
+
+import PostRedirect from "./auth/postredirect.js";
+window.authPostRedirect = PostRedirect;

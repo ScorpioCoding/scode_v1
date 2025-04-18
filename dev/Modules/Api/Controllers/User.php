@@ -30,33 +30,33 @@ class User extends Controller
 
 
 
-    //$isToken = Auth::isAuthByTokenBasic(getallheaders());
-    //if ($isToken) {
-    $isMethod = Auth::isAuthMethod('POST');
-    if ($isMethod) {
-      $isData = json_decode(file_get_contents('php://input'), true);
-      if ($isData) {
-        $res1 = ValidateUser::validateRealm($isData['realm']);
-        $res2 = ValidateUser::validateName($isData['name']);
-        $res3 = ValidateUser::validateEmail($isData['email']);
-        $res4 = ValidateUser::validatePassword($isData['psw'], $isData['pswConfirm']);
-        $isErrors = array_merge($res1, $res2, $res3, $res4);
+    $isToken = Auth::isAuthByTokenBasic(getallheaders());
+    if ($isToken) {
+      $isMethod = Auth::isAuthMethod('POST');
+      if ($isMethod) {
+        $isData = json_decode(file_get_contents('php://input'), true);
+        if ($isData) {
+          $res1 = ValidateUser::validateRealm($isData['realm']);
+          $res2 = ValidateUser::validateName($isData['name']);
+          $res3 = ValidateUser::validateEmail($isData['email']);
+          $res4 = ValidateUser::validatePassword($isData['psw'], $isData['pswConfirm']);
+          $isErrors = array_merge($res1, $res2, $res3, $res4);
 
-        if (!$isErrors) {
-          $isAction = mUser::create($isData);
-          if ($isAction["state"] === false) {
-            $isErrors = $isAction["data"];
-          } else {
-            $result = $isAction["data"];
+          if (!$isErrors) {
+            $isAction = mUser::create($isData);
+            if ($isAction["state"] === false) {
+              $isErrors = $isAction["data"];
+            } else {
+              $result = $isAction["data"];
+            }
           }
         }
       }
     }
-    //}
 
 
     Api::render($args, [
-      //'isToken' => $isToken,
+      'isToken' => $isToken,
       'isMethod' => $isMethod,
       'isData' => $isData,
       'isErrors' => $isErrors,
@@ -70,25 +70,25 @@ class User extends Controller
     // Extra data
     $data = array();
 
-    //$isToken = Auth::isAuthByTokenBasic(getallheaders());
-    //if ($isToken) {
-    $isMethod = Auth::isAuthMethod('GET');
-    if ($isMethod) {
+    $isToken = Auth::isAuthByTokenBasic(getallheaders());
+    if ($isToken) {
+      $isMethod = Auth::isAuthMethod('GET');
+      if ($isMethod) {
 
-      $isHas = mCommon::hasTable('user');
-      if ($isHas["state"] === true) {
-        $isCount = mCommon::countTable('user');
-        if ($isCount["state"] === true && $isCount["data"][0] > 0) {
-          $isData = mCommon::readAll("user");
+        $isHas = mCommon::hasTable('user');
+        if ($isHas["state"] === true) {
+          $isCount = mCommon::countTable('user');
+          if ($isCount["state"] === true && $isCount["data"][0] > 0) {
+            $isData = mCommon::readAll("user");
+          }
         }
-      }
 
+      }
     }
-    //}
 
 
     Api::render($args, [
-      //'isToken' => $isToken,
+      'isToken' => $isToken,
       'isMethod' => $isMethod,
       'isHas' => $isHas,
       'isCount' => $isCount,

@@ -30,3 +30,27 @@ const toggleDropDown = (e) => {
     e.currentTarget.children[1].classList.remove("arrow-change");
   }
 };
+
+/**
+ * Navigation & Sidebar button PostRedirect
+ * @param url = url redirect
+ */
+const btnPostRedirect = (url) => {
+  const sessionStorage = window.sessionStorage;
+  const data = {};
+  data.auth = JSON.parse(sessionStorage.getItem("auth"));
+  data.name = JSON.parse(sessionStorage.getItem("name"));
+  data.email = JSON.parse(sessionStorage.getItem("email"));
+  data.realm = JSON.parse(sessionStorage.getItem("realm"));
+  data.token = JSON.parse(sessionStorage.getItem("token"));
+  authPostRedirect(url, data, false);
+};
+
+/**
+ * Logout
+ *
+ */
+const btnLogout = () => {
+  window.sessionStorage.clear();
+  window.location.href = "/";
+};
