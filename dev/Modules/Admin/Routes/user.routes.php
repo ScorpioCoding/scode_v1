@@ -2,60 +2,40 @@
 
 return (object) array(
 
-  '/{lang}/user/login' => [
-    'module' => 'Admin',
-    'namespace' => 'Modules\Admin\Controllers',
-    'controller' => 'UserLogin',
-    'action' => 'index'
-  ],
-
-  '/{lang}/user/login/hash' => [
-    'module' => 'Admin',
-    'namespace' => 'Modules\Admin\Controllers',
-    'controller' => 'UserLogin',
-    'action' => 'hash'
-  ],
-
-  '/{lang}/user/logout' => [
-    'module' => 'Admin',
-    'namespace' => 'Modules\Admin\Controllers',
-    'controller' => 'UserLogout',
-    'action' => 'index'
-  ],
 
   '/{lang}/user/create' => [
     'module' => 'Admin',
     'namespace' => 'Modules\Admin\Controllers',
-    'controller' => 'UserCreate',
-    'action' => 'index'
+    'controller' => 'User',
+    'action' => 'create'
   ],
 
   '/{lang}/user/readall' => [
     'module' => 'Admin',
     'namespace' => 'Modules\Admin\Controllers',
-    'controller' => 'UserReadAll',
-    'action' => 'index'
+    'controller' => 'User',
+    'action' => 'readAll'
   ],
 
   '/{lang}/user/read/{id:\d+}' => [
     'module' => 'Admin',
     'namespace' => 'Modules\Admin\Controllers',
-    'controller' => 'UserReadById',
-    'action' => 'index'
+    'controller' => 'User',
+    'action' => 'readById'
   ],
 
   '/{lang}/user/update' => [
     'module' => 'Admin',
     'namespace' => 'Modules\Admin\Controllers',
-    'controller' => 'UserUpdate',
-    'action' => 'index'
+    'controller' => 'User',
+    'action' => 'update'
   ],
 
   '/{lang}/user/delete/{id:\d+}' => [
     'module' => 'Admin',
     'namespace' => 'Modules\Admin\Controllers',
-    'controller' => 'UserDelete',
-    'action' => 'index'
+    'controller' => 'User',
+    'action' => 'delete'
   ]
 
 

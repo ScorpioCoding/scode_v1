@@ -1,7 +1,8 @@
+/**
+ * USER CREATE
+ */
 const createUser = () => {
   //
-
-  console.log("JAVASCRIPT usercreate.js: hier");
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const realm = document.getElementById("realm").value;
