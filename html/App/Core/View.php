@@ -15,14 +15,14 @@ class View
 
   public static function setPage($args = array())
   {
-    if (isset($args['page']))
-      $doc = $args['page'];
+    if ($args['page'] === "" || $args['page'] == null)
+      $view = $args['controller'];
     else
-      $doc = $args['controller'];
+      $view = $args['page'];
 
     $page = PATH_MOD;
     $page .= ucfirst($args['module']) . DS . 'Views' . DS;
-    $page .= ucfirst($doc);
+    $page .= ucfirst($view);
     $page .= '.phtml';
 
     try {
