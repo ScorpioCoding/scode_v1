@@ -39,8 +39,9 @@ class Setup extends Controller
 
   public function registerAction($args = array())
   {
-    //Template for rendering
+    //Template and page for rendering
     $args['template'] = 'Blanco';
+    $args['page'] = 'SetupRegister';
     //MetaData
     $meta = array();
     $meta = (new Meta($args))->getMeta();
@@ -50,8 +51,6 @@ class Setup extends Controller
     // Extra data
     $data = array();
 
-    //page for rendering default = controller
-    $args['page'] = 'SetupRegister';
     View::render($args, $meta, $trans, [
       'data' => $data
     ]);
@@ -59,8 +58,9 @@ class Setup extends Controller
 
   public function emailSendAction($args = array())
   {
-    //Template for rendering
+    //Template and page for rendering
     $args['template'] = 'Blanco';
+    $args['page'] = 'SetupEmailSend';
     //MetaData
     $meta = array();
     $meta = (new Meta($args))->getMeta();
@@ -70,8 +70,6 @@ class Setup extends Controller
     // Extra data
     $data = array();
 
-    //page for rendering default = controller
-    $args['page'] = 'SetupEmailSend';
     View::render($args, $meta, $trans, [
       'data' => $data
     ]);
@@ -79,8 +77,9 @@ class Setup extends Controller
 
   public function emailValidateAction($args = array())
   {
-    //Template for rendering
+    //Template and page for rendering
     $args['template'] = 'Blanco';
+    $args['page'] = 'SetupEmailValidate';
     //MetaData
     $meta = array();
     $meta = (new Meta($args))->getMeta();
@@ -90,9 +89,6 @@ class Setup extends Controller
     // Extra data
     $data = array();
 
-
-    //page for rendering default = controller
-    $args['page'] = 'SetupEmailValidate';
     View::render($args, $meta, $trans, [
       'data' => $data
     ]);

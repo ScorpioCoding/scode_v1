@@ -3,32 +3,21 @@
  * Trigger -> Admin Template Starter -> body -> onload
  */
 const checkSetup = () => {
-  const getData = (data) => {
-    if (data) {
-      if (data.success === false) {
-        //console.log(data.errors);
-
-        ul.innerHTML = "";
-
-        data.errors.forEach((item) => {
-          let li = document.createElement("li");
-          li.innerHTML = item;
-          ul.append(li);
-        });
-      }
-      if (data.success === true) {
-        console.log(data.data);
-        if (data.data === 0) {
-          window.location.href = "/setup/register";
-        }
-      }
-    }
-  };
-
-  var [checkData] = apiCheck();
-
-  let url = apiUri + "/user/check";
-  checkData(url, getData);
+  var [e] = apiCheck();
+  e(apiUri + "/user/check", (e) => {
+    e &&
+      (!1 === e.success &&
+        ((ul.innerHTML = ""),
+        e.errors.forEach((e) => {
+          let c = document.createElement("li");
+          (c.innerHTML = e), ul.append(c);
+        })),
+      !0 === e.success &&
+        (console.log(e.data),
+        e.data > 0
+          ? (window.location.href = "/en/home")
+          : (window.location.href = "/setup/register")));
+  });
 };
 
 /**
