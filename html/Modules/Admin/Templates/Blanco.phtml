@@ -14,9 +14,22 @@
 <body onload="runOnLoad()">
   <div class="grid-full-layout">
 
-    <main>
-      <?php include $page; ?>
-    </main>
+    <div class="page">
+      <main>
+        <section class="breadcrumbs">
+          <?php foreach ($breadcrumbs as $key => $value): ?>
+          <a href="#" onclick="btnPostRedirect('<?= $value ?>')"><?= $key ?></a>
+          <?php endforeach ?>
+        </section>
+
+        <section class="errorhandler">
+          <ul id="errorList" class="errorList">
+          </ul>
+        </section>
+
+        <?php include $page; ?>
+      </main>
+    </div>
 
 
 

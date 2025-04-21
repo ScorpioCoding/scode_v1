@@ -1,5 +1,5 @@
-@use "backend/layout";
-@use "backend/navigation";
-@use "backend/footer";
-@use "backend/sidebar";
-@use "backend/breadcrumbs";
+@use "components/layout-backend";
+@use "components/navigation";
+@use "components/footer";
+@use "components/sidebar";
+@use "components/breadcrumbs";
