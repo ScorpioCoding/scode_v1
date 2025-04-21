@@ -22,14 +22,6 @@ video {
   display: block;
 }
 
-main {
-  margin: 10px auto;
-  padding: 10px;
-  width: 100%;
-  overflow-y: auto;
-  min-height: calc(100vh - 60px);
-}
-
 .container {
   display: flex;
   flex-direction: column;
