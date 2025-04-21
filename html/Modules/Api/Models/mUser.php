@@ -401,6 +401,31 @@ class mUser extends Database
     }
   }
 
+  public static function updateValidate($args = array()): array
+  {
+    try {
+      $query = "UPDATE `user` SET `validate`=:validate WHERE `id`=:id";
+
+      $dB = static::getdb();
+      $stmt = $dB->prepare($query);
+
+      $stmt->bindValue(':id', $args['id'], PDO::PARAM_INT);
+      $stmt->bindValue('validate', $args['validate'], PDO::PARAM_STR);
+
+      $stmt->execute();
+
+      return array(
+        "state" => true,
+        "data" => array()
+      );
+    } catch (PDOException $e) {
+      return array(
+        "state" => false,
+        "data" => array("Server Error", $e->getMessage())
+      );
+    }
+  }
+
   public static function updateRealm($args = array()): array
   {
     try {

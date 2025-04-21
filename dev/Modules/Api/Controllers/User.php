@@ -26,8 +26,8 @@ class User extends Controller
 
   public function createAction($args = array())
   {
-    //echo 'HIER BEN IK API CONTROLLER CREATE USER';
-    $args['api'] = "Create";
+    $args['template'] = "Api";
+    $args['page'] = "Create";
 
     $isToken = Auth::isAuthByTokenBasic(getallheaders());
     if ($isToken) {
@@ -65,7 +65,8 @@ class User extends Controller
 
   public function readAllAction($args = array())
   {
-    $args['api'] = "Read";
+    $args['template'] = "Api";
+    $args['page'] = "Read";
     // Extra data
     $data = array();
 
@@ -97,7 +98,9 @@ class User extends Controller
 
   public function readByIdAction($args = array())
   {
-    $args['api'] = "Read";
+    $args['template'] = "Api";
+    $args['page'] = "Read";
+
     // Extra data
     $data = array();
 
@@ -130,7 +133,8 @@ class User extends Controller
   public function updateAction($args = array())
   {
 
-    $args['api'] = "Update";
+    $args['template'] = "Api";
+    $args['page'] = "Update";
 
     $isToken = Auth::isAuthByTokenBasic(getallheaders());
     if ($isToken) {
@@ -176,7 +180,8 @@ class User extends Controller
   public function deleteAction($args = array())
   {
 
-    $args['api'] = "Delete";
+    $args['template'] = "Api";
+    $args['page'] = "Delete";
 
     $isToken = Auth::isAuthByTokenBasic(getallheaders());
     if ($isToken) {
@@ -205,7 +210,8 @@ class User extends Controller
   public function loginAction($args = array())
   {
 
-    $args['api'] = "Login";
+    $args['template'] = "Api";
+    $args['page'] = "Login";
 
     $isMethod = Auth::isAuthMethod('POST');
     if ($isMethod) {
@@ -232,8 +238,8 @@ class User extends Controller
 
   public function checkAction($args = array())
   {
-    //echo 'HIER BEN IK API CONTROLLER CREATE USER';
-    $args['api'] = "Check";
+    $args['template'] = "Api";
+    $args['page'] = "Check";
 
     $isMethod = Auth::isAuthMethod('GET');
     if ($isMethod) {
@@ -253,7 +259,8 @@ class User extends Controller
 
   public function registerAction($args = array())
   {
-    $args['api'] = "Register";
+    $args['template'] = "Api";
+    $args['page'] = "Register";
 
     $isMethod = Auth::isAuthMethod('POST');
     if ($isMethod) {
@@ -293,8 +300,8 @@ class User extends Controller
 
   public function validateAction($args = array())
   {
-    //echo 'HIER BEN IK API CONTROLLER CREATE USER';
-    $args['api'] = "Validate";
+    $args['template'] = "Api";
+    $args['page'] = "Validate";
 
     $isMethod = Auth::isAuthMethod('PUT');
     if ($isMethod) {
@@ -303,7 +310,13 @@ class User extends Controller
         $isToken = Auth::validateTokenBasic($isData['token']);
         if ($isToken) {
           $isUser = mUser::readByToken($isData['token']);
-
+          if ($isUser) {
+            if ($isUser['state'] === true) {
+              $user = $isUser['data'][0];
+              $user['validate'] = '1';
+              $isUpdate = mUser::updateValidate($user);
+            }
+          }
         }
       }
     }
@@ -312,6 +325,8 @@ class User extends Controller
       'isMethod' => $isMethod,
       'isData' => $isData,
       'isToken' => $isToken,
+      'isUser' => $isUser,
+      'isUpdate' => $isUpdate
     ]);
   }
 

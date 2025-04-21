@@ -16,8 +16,8 @@ class Api
   public static function setPage($args = array())
   {
     $page = PATH_MOD;
-    $page .= ucfirst($args['module']) . DS . 'Apis' . DS;
-    $page .= ucfirst($args['api']);
+    $page .= ucfirst($args['module']) . DS . 'Views' . DS;
+    $page .= ucfirst($args['page']);
     $page .= '.php';
 
     try {
@@ -31,8 +31,8 @@ class Api
 
   public static function setTemplate($args = array())
   {
-    $template = PATH_APP;
-    $template .= 'Templates' . DS;
+    $template = PATH_MOD;
+    $template .= ucfirst($args['module']) . DS . 'Templates' . DS;
     $template .= ucfirst($args['template']);
     $template .= '.php';
 
@@ -56,12 +56,12 @@ class Api
     try {
       $page = self::setPage($args);
 
-      //$template = self::setTemplate($args);
+      $template = self::setTemplate($args);
 
       if ($page) {
         extract($data);
-        //require $template;
-        require $page;
+        require $template;
+        //require $page;
       } else {
         throw new NewException("Api.php : render : Rendering FAILED");
       }
