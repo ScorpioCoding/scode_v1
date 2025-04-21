@@ -43,8 +43,13 @@ class Router
     $route = '/^' . $route . '$/i';
     //echo ('<br> Add start and end delimiters, and case insensitive flag' . $route);
 
+    //print_r($route);
+
     $this->routes[$route] = $params;
-    //var_dump($this->routes);
+    // echo "<pre>";
+    // print_r($this->routes);
+    // echo "</pre>";
+
   }
 
   /** Dispatch the route, 

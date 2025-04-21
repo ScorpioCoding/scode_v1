@@ -20,7 +20,26 @@ class mUser extends Database
     parent::__construct();
   }
 
-
+  public static function countByRealm(string $realm): array
+  {
+    try {
+      $query = "SELECT * FROM `user` WHERE `realm`=:realm";
+      $dB = static::getdb();
+      $stmt = $dB->prepare($query);
+      $stmt->bindValue(':realm', $realm, PDO::PARAM_STR);
+      $stmt->setFetchMode(PDO::FETCH_ASSOC);
+      $stmt->execute();
+      return array(
+        "state" => true,
+        "data" => array($stmt->rowCount())
+      );
+    } catch (PDOException $e) {
+      return array(
+        "state" => false,
+        "data" => array("Server Error", $e->getMessage())
+      );
+    }
+  }
 
   public static function countByEmail(string $email): array
   {
@@ -162,13 +181,35 @@ class mUser extends Database
   }
 
 
-  public static function readByPermission(string $realm): array
+  public static function readByRealm(string $realm): array
   {
     try {
       $query = "SELECT * FROM `user` WHERE `realm` = :realm LIMIT 1";
       $dB = static::getdb();
       $stmt = $dB->prepare($query);
       $stmt->bindValue(':realm', $realm, PDO::PARAM_STR);
+      $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+      $stmt->execute();
+      return array(
+        "state" => true,
+        "data" => $stmt->fetchAll(),
+      );
+    } catch (PDOException $e) {
+      return array(
+        "state" => false,
+        "data" => array("Server Error", $e->getMessage())
+      );
+    }
+  }
+
+  public static function readByToken(string $token): array
+  {
+    try {
+      $query = "SELECT * FROM `user` WHERE `token` = :token LIMIT 1";
+      $dB = static::getdb();
+      $stmt = $dB->prepare($query);
+      $stmt->bindValue(':token', $token, PDO::PARAM_STR);
       $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
       $stmt->execute();
@@ -411,6 +452,16 @@ class mUser extends Database
     }
   }
 
+  public static function isValidated($email): bool
+  {
+    $user = static::getUserByEmail($email);
+    if ($user->validate > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   public static function getUserByEmail($email): object
   {
 
@@ -432,8 +483,9 @@ class mUser extends Database
     //print_r($user);
     if ($user) {
       if ($user->archive == '0' || $user->archive == 'null')
-        if (true === password_verify($psw, $user->pswhash))
-          return $user;
+        if ($user->validate == '1')
+          if (true === password_verify($psw, $user->pswhash))
+            return $user;
     }
     return false;
 

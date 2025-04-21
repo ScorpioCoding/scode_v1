@@ -7,7 +7,7 @@ USE scodeblog;
 --
 
 CREATE TABLE IF NOT EXISTS `user` ( 
-  `id` BIGINT PRIMARY KEY,
+  `id` BIGINT PRIMARY KEY AUTO_INCREMENT,
   `name` VARCHAR(255) UNIQUE,   
   `email` VARCHAR(255) UNIQUE,
   `validate` tinyint(1) NOT NULL DEFAULT 0,
@@ -24,8 +24,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- psw: ChangeMe01
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `validate`, `archive`, `realm`, `pswhash`, `token`, `created_at`) VALUES
-(1, 'admin', 'admin@admin.com', 0, 0, 'super', '$2y$10$B4a3.4RZj9ZtCcmA6qwUX.Cjog/o4mKpjAZJR6tCLqHtwP.P7E4PS', 'tokenToBeCreated', '2024-11-06 17:56:13');
+/* INSERT INTO `user` (`id`, `name`, `email`, `validate`, `archive`, `realm`, `pswhash`, `token`, `created_at`) VALUES
+(1, 'admin', 'admin@admin.com', 0, 0, 'super', '$2y$10$B4a3.4RZj9ZtCcmA6qwUX.Cjog/o4mKpjAZJR6tCLqHtwP.P7E4PS', 'tokenToBeCreated', '2024-11-06 17:56:13'); */
 
 
 
@@ -34,7 +34,7 @@ INSERT INTO `user` (`id`, `name`, `email`, `validate`, `archive`, `realm`, `pswh
 --
 
 CREATE TABLE IF NOT EXISTS `post` ( 
-  `id` BIGINT PRIMARY KEY,
+  `id` BIGINT PRIMARY KEY AUTO_INCREMENT,
   `name` VARCHAR(255) UNIQUE,   
   `slug` VARCHAR(255) UNIQUE,
   `userId` BIGINT NOT NULL,

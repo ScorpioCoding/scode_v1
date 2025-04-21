@@ -9,7 +9,7 @@ if (array_key_exists('HTTP_ORIGIN', $_SERVER)) {
 }
 
 if (in_array($origin, $allowed_domains)) {
-  header('Access-Control-Allow-Origin: ' . $allowed_domains);
+  header('Access-Control-Allow-Origin: ' . $origin);
 } else {
   //No HTTP_ORIGIN set, so we allow any. You can disallow if needed here
   header("Access-Control-Allow-Origin: *");
@@ -30,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "OPTIONS") {
 }
 
 
-$method = $_SERVER['REQUEST_METHOD'];
 $response = array();
 
 if ($isMethod) {

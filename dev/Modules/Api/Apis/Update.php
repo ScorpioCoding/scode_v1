@@ -9,7 +9,7 @@ if (array_key_exists('HTTP_ORIGIN', $_SERVER)) {
 }
 
 if (in_array($origin, $allowed_domains)) {
-  header('Access-Control-Allow-Origin: ' . $allowed_domains);
+  header('Access-Control-Allow-Origin: ' . $origin);
 } else {
   //No HTTP_ORIGIN set, so we allow any. You can disallow if needed here
   header("Access-Control-Allow-Origin: *");
@@ -29,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "OPTIONS") {
   exit(0);
 }
 
-$method = $_SERVER['REQUEST_METHOD'];
 $response = array();
 
 
@@ -59,9 +58,7 @@ if ($isToken) {
 }
 
 
-if ('OPTIONS' === $method) {
-  header('HTTP/1.1 204 No Content');
-}
+
 
 // Display Results
 echo (json_encode($response));

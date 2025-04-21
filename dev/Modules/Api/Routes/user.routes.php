@@ -2,7 +2,29 @@
 
 return (object) array(
 
+  '/user/check' => [
+    'lang' => 'en',
+    'module' => 'Api',
+    'namespace' => 'Modules\Api\Controllers',
+    'controller' => 'User',
+    'action' => 'check'
+  ],
 
+  '/user/register' => [
+    'lang' => 'en',
+    'module' => 'Api',
+    'namespace' => 'Modules\Api\Controllers',
+    'controller' => 'User',
+    'action' => 'register'
+  ],
+
+  '/user/validate' => [
+    'lang' => 'en',
+    'module' => 'Api',
+    'namespace' => 'Modules\Api\Controllers',
+    'controller' => 'User',
+    'action' => 'validate'
+  ],
 
   '/user/login' => [
     'module' => 'Api',

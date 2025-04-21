@@ -2,20 +2,10 @@
 
 return (object) array(
 
-
-  '' => [
-    'lang' => 'en',
+  '*' => [
     'module' => 'Admin',
     'namespace' => 'Modules\Admin\Controllers',
-    'controller' => 'Home',
-    'action' => 'index'
-  ],
-
-  '/' => [
-    'lang' => 'en',
-    'module' => 'Admin',
-    'namespace' => 'Modules\Admin\Controllers',
-    'controller' => 'Home',
+    'controller' => 'BadUri',
     'action' => 'index'
   ],
 

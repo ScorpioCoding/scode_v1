@@ -1,0 +1,54 @@
+<section class="container">
+  <h1>THIS IS THE ADMIN MASTER USER REGISTRATION PAGE</h1>
+  <br />
+  <br />
+  <p>No Master User was found, please create one?</p>
+</section>
+
+<section class="container">
+  <ul id="errorList" class="errorList">
+  </ul>
+</section>
+
+<section class="container">
+  <form class="form-container">
+    <div class="form-wrapper">
+      <div class="form-group-stretch">
+        <label for="name">Name : </label>
+        <input type="text" name="name" id="name" />
+      </div>
+    </div>
+    <div class="form-wrapper">
+      <div class="form-group-stretch">
+        <label for="email">Email : </label>
+        <input type="text" name="email" id="email" />
+      </div>
+    </div>
+    <div class="form-wrapper">
+      <div class="form-group-stretch">
+        <label for="realm">Realm : </label>
+        <input type="text" name="realm" id="realm" value="super" readonly />
+      </div>
+    </div>
+    <div class="form-wrapper">
+      <div class="form-group-stretch">
+        <label for="psw">Password : </label>
+        <input type="text" name="psw" id="psw" />
+      </div>
+    </div>
+    <div class="form-wrapper">
+      <div class="form-group-stretch">
+        <label for="pswConfirm">Password Confirm : </label>
+        <input type="text" name="pswConfirm" id="pswConfirm" />
+      </div>
+    </div>
+    <div class="form-wrapper">
+      <div class="form-group-stretch">
+        <button id="btn" type="button" class="btn-boston-stretch" style="text-transform: uppercase"
+          onclick="registerUser()">
+          <?= $trans['register']['btn']['register'] ?>
+        </button>
+      </div>
+    </div>
+  </form>
+</section>

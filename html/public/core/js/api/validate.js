@@ -1,0 +1,1 @@
+import useHttp from"./usehttp.js";export default function Validate(){let[t]=useHttp();return[(e,p,n)=>{t(e,"PUT",{"Content-Type":"application/json"},p,n)}]}

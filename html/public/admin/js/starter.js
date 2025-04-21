@@ -1,0 +1,1 @@
+const checkSetup=()=>{var[e]=apiCheck();e(apiUri+"/user/check",(e=>{e&&(!1===e.success&&(ul.innerHTML="",e.errors.forEach((e=>{let c=document.createElement("li");c.innerHTML=e,ul.append(c)}))),!0===e.success&&(console.log(e.data),e.data>0?window.location.href="/en/home":window.location.href="/setup/register"))}))};

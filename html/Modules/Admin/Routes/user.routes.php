@@ -36,6 +36,14 @@ return (object) array(
     'namespace' => 'Modules\Admin\Controllers',
     'controller' => 'User',
     'action' => 'delete'
+  ],
+
+  '/user/register' => [
+    'lang' => 'en',
+    'module' => 'Admin',
+    'namespace' => 'Modules\Admin\Controllers',
+    'controller' => 'User',
+    'action' => 'register'
   ]
 
 

@@ -152,6 +152,29 @@ class User extends Controller
     ]);
   }
 
+
+  public function registerAction($args = array())
+  {
+    //Template for rendering
+    $args['template'] = 'Blanco';
+    //MetaData
+    $meta = array();
+    $meta = (new Meta($args))->getMeta();
+    // Translation
+    $trans = array();
+    $trans = Translation::translate($args);
+    // Extra data
+    $data = array();
+    $data = $_POST;
+
+
+    //page for rendering default = controller
+    $args['page'] = 'UserRegister';
+    View::render($args, $meta, $trans, [
+      'data' => $data
+    ]);
+  }
+
   protected function after()
   {
   }

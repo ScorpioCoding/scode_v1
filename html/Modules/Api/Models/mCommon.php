@@ -140,6 +140,8 @@ class mCommon extends Database
     }
   }
 
+
+
   public static function countTableBySlug(string $table, string $slug): array
   {
     try {

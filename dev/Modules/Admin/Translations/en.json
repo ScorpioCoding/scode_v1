@@ -26,5 +26,11 @@
       "delete": "Delete User",
       "login": "User Login"
     }
+  },
+  "register": {
+    "btn": {
+      "register": "Register User",
+      "validate": "Validate Email"
+    }
   }
 }

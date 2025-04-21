@@ -160,6 +160,14 @@ class ValidateUser
         else if (filter_var($email, FILTER_VALIDATE_EMAIL) === false)
             $errorList[] = 'Email Invalid!';
 
+        //Archived
+        if (mUser::isArchived($email))
+            $errorList[] = 'User Invalid!';
+
+        //Email Validates
+        if (!mUser::isValidated($email))
+            $errorList[] = 'User Email Validation Required!';
+
         //Password 
         if ($psw === "")
             $errorList[] = 'Password required !';

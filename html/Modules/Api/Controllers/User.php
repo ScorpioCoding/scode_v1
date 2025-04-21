@@ -9,6 +9,7 @@ use App\Core\Auth;
 use Modules\Api\Models\mCommon;
 use Modules\Api\Models\mUser;
 use Modules\Api\Utils\ValidateUser;
+use Modules\Api\Utils\MailValidationEmail;
 
 /**
  *  Api User CRUD
@@ -28,8 +29,6 @@ class User extends Controller
     //echo 'HIER BEN IK API CONTROLLER CREATE USER';
     $args['api'] = "Create";
 
-
-
     $isToken = Auth::isAuthByTokenBasic(getallheaders());
     if ($isToken) {
       $isMethod = Auth::isAuthMethod('POST');
@@ -43,6 +42,7 @@ class User extends Controller
           $isErrors = array_merge($res1, $res2, $res3, $res4);
 
           if (!$isErrors) {
+            $isData['token'] = Auth::createTokenBasic($isData['email'], $isData['psw']);
             $isAction = mUser::create($isData);
             if ($isAction["state"] === false) {
               $isErrors = $isAction["data"];
@@ -53,7 +53,6 @@ class User extends Controller
         }
       }
     }
-
 
     Api::render($args, [
       'isToken' => $isToken,
@@ -86,7 +85,6 @@ class User extends Controller
       }
     }
 
-
     Api::render($args, [
       'isToken' => $isToken,
       'isMethod' => $isMethod,
@@ -117,7 +115,6 @@ class User extends Controller
 
       }
     }
-
 
     Api::render($args, [
       'isToken' => $isToken,
@@ -154,6 +151,7 @@ class User extends Controller
           //print_r($res);
 
           if (!$isErrors) {
+            $isData['token'] = Auth::createTokenBasic($isData['email'], $isData['psw']);
             $isAction = mUser::update($isData);
             if ($isAction["state"] === false) {
               $isErrors = $isAction["data"];
@@ -232,7 +230,90 @@ class User extends Controller
     ]);
   }
 
+  public function checkAction($args = array())
+  {
+    //echo 'HIER BEN IK API CONTROLLER CREATE USER';
+    $args['api'] = "Check";
 
+    $isMethod = Auth::isAuthMethod('GET');
+    if ($isMethod) {
+
+      $isHas = mCommon::hasTable('user');
+      if ($isHas["state"] === true) {
+        $isCount = mUser::countByRealm('super');
+      }
+    }
+
+    Api::render($args, [
+      'isMethod' => $isMethod,
+      'isHas' => $isHas,
+      'isCount' => $isCount
+    ]);
+  }
+
+  public function registerAction($args = array())
+  {
+    $args['api'] = "Register";
+
+    $isMethod = Auth::isAuthMethod('POST');
+    if ($isMethod) {
+      $isData = json_decode(file_get_contents('php://input'), true);
+      if ($isData) {
+        $res1 = ValidateUser::validateRealm($isData['realm']);
+        $res2 = ValidateUser::validateName($isData['name']);
+        $res3 = ValidateUser::validateEmail($isData['email']);
+        $res4 = ValidateUser::validatePassword($isData['psw'], $isData['pswConfirm']);
+        $isErrors = array_merge($res1, $res2, $res3, $res4);
+
+        if (!$isErrors) {
+          $isData['token'] = Auth::createTokenBasic($isData['email'], $isData['psw']);
+          $isAction = mUser::create($isData);
+          if ($isAction["state"] === false) {
+            $isErrors = $isAction["data"];
+          } else {
+            //Send Validation Email
+            $link = $_SERVER['HTTP_REFERER'] . "setup/email/validate/" . $isData['token'];
+            $isMail = (new MailValidationEmail($isData['email'], $link))->execMail();
+            if ($isMail['state'] === false)
+              $isErrors = $isMail['data'];
+            else
+              $result = $isAction["data"];
+          }
+        }
+      }
+    }
+
+    Api::render($args, [
+      'isMethod' => $isMethod,
+      'isData' => $isData,
+      'isErrors' => $isErrors,
+      'result' => $result,
+    ]);
+  }
+
+  public function validateAction($args = array())
+  {
+    //echo 'HIER BEN IK API CONTROLLER CREATE USER';
+    $args['api'] = "Validate";
+
+    $isMethod = Auth::isAuthMethod('PUT');
+    if ($isMethod) {
+      $isData = json_decode(file_get_contents('php://input'), true);
+      if ($isData) {
+        $isToken = Auth::validateTokenBasic($isData['token']);
+        if ($isToken) {
+          $isUser = mUser::readByToken($isData['token']);
+
+        }
+      }
+    }
+
+    Api::render($args, [
+      'isMethod' => $isMethod,
+      'isData' => $isData,
+      'isToken' => $isToken,
+    ]);
+  }
 
   protected function after()
   {

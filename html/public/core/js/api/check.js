@@ -1,0 +1,1 @@
+import useHttp from"./usehttp.js";export default function Check(){let[t]=useHttp();return[(e,n)=>{t(e,"GET",{"Content-Type":"application/json"},null,n)}]}

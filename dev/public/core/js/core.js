@@ -1,6 +1,15 @@
 import apiUri from "./api/urls.js";
 window.apiUri = apiUri;
 
+import Check from "./api/check.js";
+window.apiCheck = Check;
+
+import Register from "./api/register.js";
+window.apiRegister = Register;
+
+import Validate from "./api/validate.js";
+window.apiValidate = Validate;
+
 import Create from "./api/create.js";
 window.apiCreate = Create;
 

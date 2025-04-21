@@ -1,0 +1,1 @@
+import useHttp from"./usehttp.js";export default function Register(){let[t]=useHttp();return[(e,p,n)=>{t(e,"POST",{"Content-Type":"application/json"},p,n)}]}
