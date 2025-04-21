@@ -298,7 +298,7 @@ class User extends Controller
     ]);
   }
 
-  public function validateAction($args = array())
+  public function updateValidateAction($args = array())
   {
     $args['template'] = "Api";
     $args['page'] = "Validate";

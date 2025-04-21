@@ -110,7 +110,7 @@ const emailValidate = () => {
 
   var [validateData] = apiValidate();
 
-  let url = apiUri + "/user/validate";
+  let url = apiUri + "/user/update/validate";
   let body = {
     token: token,
   };

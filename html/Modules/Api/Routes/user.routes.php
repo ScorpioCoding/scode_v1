@@ -18,12 +18,12 @@ return (object) array(
     'action' => 'register'
   ],
 
-  '/user/validate' => [
+  '/user/update/validate' => [
     'lang' => 'en',
     'module' => 'Api',
     'namespace' => 'Modules\Api\Controllers',
     'controller' => 'User',
-    'action' => 'validate'
+    'action' => 'updateValidate'
   ],
 
   '/user/login' => [
