@@ -103,7 +103,7 @@ class Router
       //TODO REDIRECT HEADER TO CUSTOM 404
       //throw new NewException('ROUTER :: No route matched.', 404);
       header('HTTP/1.1 404 Not Found');
-      header("Refresh:0; url=404.php");
+      header("Refresh:0; url=/404.htm");
     }
   }
 
