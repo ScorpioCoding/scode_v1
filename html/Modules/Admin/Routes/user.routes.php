@@ -38,8 +38,7 @@ return (object) array(
     'action' => 'delete'
   ],
 
-  '/user/register' => [
-    'lang' => 'en',
+  '/{lang}/user/register' => [
     'module' => 'Admin',
     'namespace' => 'Modules\Admin\Controllers',
     'controller' => 'User',

@@ -25,6 +25,9 @@ window.apiDelete = Delete;
 import LogIn from "./api/login.js";
 window.apiLogin = LogIn;
 
+import CheckAuth from "./auth/checkauth.js";
+window.authCheck = CheckAuth;
+
 import SetStorage from "./auth/setstorage.js";
 window.authSetStorage = SetStorage;
 

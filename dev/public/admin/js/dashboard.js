@@ -1,8 +1,12 @@
 //
 
-const start = () => {
-  var data = authGetStorage();
-  console.log(data);
+const runOnLoad = () => {
+  //
+  authCheck();
+  // Read User data
+  getUserData();
 };
 
-start();
+const getUserData = () => {
+  console.log("wij zijn hier");
+};

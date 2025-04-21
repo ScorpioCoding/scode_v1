@@ -33,19 +33,26 @@ class User extends Controller
     // Extra data
     $data = array();
     $data = $_POST;
+    // SetUp the Navigator Bar
+    $breadcrumbs = array(
+      "Scode" => DS,
+      "Users" => "",
+    );
 
 
     //page for rendering default = controller
     //$args['page'] = 'UserReadAll';
     View::render($args, $meta, $trans, [
-      'data' => $data
+      'data' => $data,
+      'breadcrumbs' => $breadcrumbs,
     ]);
   }
 
   public function createAction($args = array())
   {
-    //Template for rendering
+    //Template and page for rendering
     $args['template'] = 'Backend';
+    $args['page'] = 'UserCreate';
     //MetaData
     $meta = array();
     $meta = (new Meta($args))->getMeta();
@@ -56,18 +63,24 @@ class User extends Controller
     $data = array();
     $data = $_POST;
 
+    $breadcrumbs = array(
+      "Scode" => DS,
+      "Users" => "",
+      "List" => DS . $args['lang'] . DS . $meta['scMetaRoute'],
+    );
 
-    //page for rendering default = controller
-    $args['page'] = 'UserCreate';
+
     View::render($args, $meta, $trans, [
-      'data' => $data
+      'data' => $data,
+      'breadcrumbs' => $breadcrumbs,
     ]);
   }
 
   public function readAllAction($args = array())
   {
-    //Template for rendering
+    //Template and page for rendering
     $args['template'] = 'Backend';
+    $args['page'] = 'UserReadAll';
     //MetaData
     $meta = array();
     $meta = (new Meta($args))->getMeta();
@@ -78,18 +91,23 @@ class User extends Controller
     $data = array();
     $data = $_POST;
 
+    $breadcrumbs = array(
+      "Scode" => DS,
+      "Users" => "",
+      "List" => DS . $args['lang'] . DS . $meta['scMetaRoute'],
+    );
 
-    //page for rendering default = controller
-    $args['page'] = 'UserReadAll';
     View::render($args, $meta, $trans, [
-      'data' => $data
+      'data' => $data,
+      'breadcrumbs' => $breadcrumbs,
     ]);
   }
 
   public function readByIdAction($args = array())
   {
-    //Template for rendering
+    //Template and page for rendering
     $args['template'] = 'Backend';
+    $args['page'] = 'UserReadById';
     //MetaData
     $meta = array();
     $meta = (new Meta($args))->getMeta();
@@ -100,18 +118,23 @@ class User extends Controller
     $data = array();
     $data = $_POST;
 
+    $breadcrumbs = array(
+      "Scode" => DS,
+      "Users" => "",
+      "ReadById" => DS . $args['lang'] . DS . $meta['scMetaRoute'],
+    );
 
-    //page for rendering default = controller
-    $args['page'] = 'UserReadById';
     View::render($args, $meta, $trans, [
-      'data' => $data
+      'data' => $data,
+      'breadcrumbs' => $breadcrumbs,
     ]);
   }
 
   public function updateAction($args = array())
   {
-    //Template for rendering
+    //Template and page for rendering
     $args['template'] = 'Backend';
+    $args['page'] = 'UserUpdate';
     //MetaData
     $meta = array();
     $meta = (new Meta($args))->getMeta();
@@ -122,11 +145,15 @@ class User extends Controller
     $data = array();
     $data = $_POST;
 
+    $breadcrumbs = array(
+      "Scode" => DS,
+      "Users" => "",
+      "Update" => DS . $args['lang'] . DS . $meta['scMetaRoute'],
+    );
 
-    //page for rendering default = controller
-    $args['page'] = 'UserUpdate';
     View::render($args, $meta, $trans, [
-      'data' => $data
+      'data' => $data,
+      'breadcrumbs' => $breadcrumbs,
     ]);
   }
 
@@ -144,34 +171,17 @@ class User extends Controller
     $data = array();
     $data = $_POST;
 
+    $breadcrumbs = array(
+      "Scode" => DS,
+      "Users" => "",
+      "Delete" => DS . $args['lang'] . DS . $meta['scMetaRoute'],
+    );
 
     //page for rendering default = controller
     $args['page'] = 'UserDelete';
     View::render($args, $meta, $trans, [
-      'data' => $data
-    ]);
-  }
-
-
-  public function registerAction($args = array())
-  {
-    //Template for rendering
-    $args['template'] = 'Blanco';
-    //MetaData
-    $meta = array();
-    $meta = (new Meta($args))->getMeta();
-    // Translation
-    $trans = array();
-    $trans = Translation::translate($args);
-    // Extra data
-    $data = array();
-    $data = $_POST;
-
-
-    //page for rendering default = controller
-    $args['page'] = 'UserRegister';
-    View::render($args, $meta, $trans, [
-      'data' => $data
+      'data' => $data,
+      'breadcrumbs' => $breadcrumbs,
     ]);
   }
 

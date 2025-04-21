@@ -1,0 +1,24 @@
+.breadcrumbs {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 0 10px 0;
+
+  a {
+    text-decoration: none;
+    font-family: var(--ff-brand);
+    font-size: var(--fs-400);
+    font-weight: var(--fw-400);
+    color: var(--grey-light);
+
+    &::after {
+      content: " / ";
+    }
+
+    &:last-child {
+      color: var(--accent);
+      &::after {
+        content: none;
+      }
+    }
+  }
+}

@@ -66,6 +66,7 @@ class Meta
     $this->meta['scMetaOgUrl'] .= '/' . $args['action'];
 
     $this->meta['scMetaRoute'] = strtolower($args['controller']);
+    $this->meta['scMetaRoute'] .= (strtolower($args['action']) === 'index') ? "" : DS . strtolower($args['action']);
 
     $this->meta['scPathCoreCss'] .= '/core/css/core';
     $this->meta['scPathCoreJs'] .= '/core/js/core';

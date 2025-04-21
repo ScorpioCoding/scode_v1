@@ -2,13 +2,6 @@
 
 return (object) array(
 
-  '*' => [
-    'module' => 'Admin',
-    'namespace' => 'Modules\Admin\Controllers',
-    'controller' => 'BadUri',
-    'action' => 'index'
-  ],
-
   '/{lang}/home' => [
     'module' => 'Admin',
     'namespace' => 'Modules\Admin\Controllers',

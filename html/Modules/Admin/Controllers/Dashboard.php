@@ -23,8 +23,9 @@ class Dashboard extends Controller
 
   public function indexAction($args = array())
   {
-    //Template for rendering
+    //Template and page for rendering
     $args['template'] = 'Backend';
+    $args['page'] = 'Dashboard';
     //MetaData
     $meta = array();
     $meta = (new Meta($args))->getMeta();
@@ -34,12 +35,15 @@ class Dashboard extends Controller
     // Extra data
     $data = array();
     $data = $_POST;
+    // SetUp the Navigator Bar
+    $breadcrumbs = array(
+      "Scode" => DS,
+      "Dashboard" => DS . $args['lang'] . DS . $meta['scMetaRoute'],
+    );
 
-
-    //page for rendering default = controller
-    //$args['page'] = 'Home';
     View::render($args, $meta, $trans, [
-      'data' => $data
+      'data' => $data,
+      'breadcrumbs' => $breadcrumbs,
     ]);
   }
 

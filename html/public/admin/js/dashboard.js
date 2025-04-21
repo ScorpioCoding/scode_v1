@@ -1,1 +1,1 @@
-const start=()=>{var t=authGetStorage();console.log(t)};start();
+const runOnLoad=()=>{authCheck(),getUserData()},getUserData=()=>{console.log("wij zijn hier")};

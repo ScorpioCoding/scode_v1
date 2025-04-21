@@ -1,0 +1,1 @@
+export default function CheckAuth(){"false"===JSON.parse(window.sessionStorage.getItem("auth"))&&(window.location.href="/")}

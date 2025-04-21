@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="<?= $scPathCss; ?>.css">
 </head>
 
-<body>
+<body onload="runOnLoad()">
   <div class="grid-full-layout">
     <header>
       <?php include 'backend/navigation.phtml' ?>
@@ -22,6 +22,17 @@
         <?php include 'backend/sidebar.phtml' ?>
       </aside>
       <main>
+        <section class="breadcrumbs">
+          <?php foreach ($breadcrumbs as $key => $value): ?>
+          <a href="#" onclick="btnPostRedirect('<?= $value ?>')"><?= $key ?></a>
+          <?php endforeach ?>
+        </section>
+
+        <section class="container errorhandler">
+          <ul id="errorList" class="errorList">
+          </ul>
+        </section>
+
         <?php include $page; ?>
       </main>
     </div>
