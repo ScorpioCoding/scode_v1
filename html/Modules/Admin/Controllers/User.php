@@ -22,8 +22,9 @@ class User extends Controller
 
   public function indexAction($args = array())
   {
-    //Template for rendering
+    //Template and page for rendering
     $args['template'] = 'Backend';
+    $args['page'] = 'User';
     //MetaData
     $meta = array();
     $meta = (new Meta($args))->getMeta();
@@ -39,9 +40,6 @@ class User extends Controller
       "Users" => "",
     );
 
-
-    //page for rendering default = controller
-    //$args['page'] = 'UserReadAll';
     View::render($args, $meta, $trans, [
       'data' => $data,
       'breadcrumbs' => $breadcrumbs,
@@ -159,8 +157,9 @@ class User extends Controller
 
   public function deleteAction($args = array())
   {
-    //Template for rendering
+    //Template and page for rendering
     $args['template'] = 'Backend';
+    $args['page'] = 'UserDelete';
     //MetaData
     $meta = array();
     $meta = (new Meta($args))->getMeta();
@@ -177,8 +176,6 @@ class User extends Controller
       "Delete" => DS . $args['lang'] . DS . $meta['scMetaRoute'],
     );
 
-    //page for rendering default = controller
-    $args['page'] = 'UserDelete';
     View::render($args, $meta, $trans, [
       'data' => $data,
       'breadcrumbs' => $breadcrumbs,

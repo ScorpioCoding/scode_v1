@@ -79,7 +79,7 @@ class User extends Controller
         if ($isHas["state"] === true) {
           $isCount = mCommon::countTable('user');
           if ($isCount["state"] === true && $isCount["data"][0] > 0) {
-            $isData = mCommon::readAll("user");
+            $isData = mUser::readAll();
           }
         }
 

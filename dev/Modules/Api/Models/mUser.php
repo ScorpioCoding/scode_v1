@@ -140,7 +140,7 @@ class mUser extends Database
   public static function readAll(): array|string
   {
     try {
-      $query = "SELECT * FROM `user`";
+      $query = "SELECT `id`,`name`,`email`,`realm`,`validate`,`archive`,`created_at` FROM `user`";
       $dB = static::getdb();
       $stmt = $dB->prepare($query);
       $stmt->setFetchMode(PDO::FETCH_ASSOC);
